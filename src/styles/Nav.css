@@ -1,0 +1,35 @@
+header {
+    width: 100%;
+    position: relative;
+    background: rgb(220, 158, 158);
+}
+
+header nav {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 111;
+    width: 100%;
+    justify-content: space-between;
+    padding: 25px 7.5vw;
+    color: #eee;
+
+}
+
+.nv-l {
+    font-size: 2rem;
+}
+
+.nv-r {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.nv-r>* {
+    color: #eee;
+    /* color: #252525; */
+    text-decoration: none;
+}

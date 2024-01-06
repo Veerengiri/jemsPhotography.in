@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Home from "./pages/Home/Home";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Wedding from "./pages/Service/Wedding";
+import { ServiceProvider } from "./providers/ServiceProvider";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <ServiceProvider>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/service/wedding" element={<Wedding />} />
+          <Route path="/service/engagement" element={<Wedding />} />
+          <Route path="/service/pre-wedding" element={<Wedding />} />
+          <Route path="/service/cinematography" element={<Wedding />} />
+          <Route path="/service/destination-wedding" element={<Wedding />} />
+        </Routes>
+      </ServiceProvider>
+    </Router>
   );
-}
+};
 
 export default App;
