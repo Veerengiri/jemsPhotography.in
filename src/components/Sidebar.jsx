@@ -46,50 +46,48 @@ const Sidebar = () => {
           </div>
           <div id="nav_links">
             <div id="link">
-              <Link to="/Dashboard">
+              <Link to="/">
+                <span>
+                  <HomeOutlinedIcon/>
+                </span>
+                <b className="sidebar_nav_txt">Home Page</b>
+              </Link>
+              <small className="sidebar_nav_txt">Edit Home </small>
+              <Link to="/dashboard/modify-slider">
                 <span>
                   <DashboardOutlinedIcon />
                 </span>
-                <b className="sidebar_nav_txt">dashboard</b>
+                <b className="sidebar_nav_txt">Modify Slider</b>
               </Link>
              
-              <Link to="/">
+              <Link to="/dashboard/modify-about">
                 <span>
-                  <ShoppingCartOutlinedIcon />
+                 <BookOutlinedIcon />
                 </span>
-                <b className="sidebar_nav_txt">personal shopper</b>
+                <b className="sidebar_nav_txt"> About Section</b>
               </Link>
-              <Link to="/">
+              <small className="sidebar_nav_txt">Edit Services</small>
+                <Link to="/dashboard/modify-service">
                 <span>
-                  <LockClockOutlinedIcon />
+                  <StickyNote2OutlinedIcon />
                 </span>
-                <b className="sidebar_nav_txt">locker</b>
+                <b className="sidebar_nav_txt"> Service Cards</b>
               </Link>
-              <Link to="/">
+                <Link to="/dashboard/add-service">
                 <span>
-                  <FlightTakeoffOutlinedIcon />
+                  <StickyNote2OutlinedIcon />
                 </span>
-                <b className="sidebar_nav_txt">curiour shipment</b>
+                <b className="sidebar_nav_txt"> Add New Service</b>
               </Link>
-              <Link to="/">
+            
+              <small className="sidebar_nav_txt">Add/Remove Grid Imgs</small>
+                <Link to="/dashboard/manage-grid">
                 <span>
-                  <StoreMallDirectoryOutlinedIcon />
+                  <StickyNote2OutlinedIcon />
                 </span>
-                <b className="sidebar_nav_txt">indian shops</b>
+                <b className="sidebar_nav_txt"> Manage Grid Imgs</b>
               </Link>
-              <Link to="/">
-                <span>
-                  <DiscountOutlinedIcon />
-                </span>
-                <b className="sidebar_nav_txt">coupons available</b>
-              </Link>
-              <small className="sidebar_nav_txt">Help</small>
-              <Link to="/">
-                <span>
-                  <DoNotDisturbAltOutlinedIcon />
-                </span>
-                <b className="sidebar_nav_txt"> prohibited items</b>
-              </Link>
+              {/* <small className="sidebar_nav_txt">Help</small>
               <Link to="/">
                 <span>
                   <BookOutlinedIcon />
@@ -107,32 +105,8 @@ const Sidebar = () => {
                   <StickyNote2OutlinedIcon />
                 </span>
                 <b className="sidebar_nav_txt"> new blogs</b>
-              </Link>
-              <small className="sidebar_nav_txt">your stuff</small>
-              <Link to="/">
-                <span>
-                  <Groups2Icon/>
-                </span>
-                <b className="sidebar_nav_txt"> refer and earn</b>
-              </Link>
-              <Link to="/">
-                <span>
-                  <AccountCircleIcon/>
-                </span>
-                <b className="sidebar_nav_txt"> profile</b>
-              </Link>
-              <Link to="/">
-                <span>
-                  <AccountBalanceWalletIcon/>
-                </span>
-                <b className="sidebar_nav_txt"> wallet</b>
-              </Link>
-              <Link to="/">
-                <span>
-                  <ArticleOutlinedIcon/>
-                </span>
-                <b className="sidebar_nav_txt"> documents</b>
-              </Link>
+              </Link> */}
+           
        
             </div>
           </div>

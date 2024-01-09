@@ -33,10 +33,10 @@
 
 #temp {
     height: 100vh;
-
-    background: #eee;
-    color: #1e1e2c;
-    font-size: 5rem;
+width:100%;
+    /* background: #eee; */
+    /* color: #1e1e2c; */
+    /* font-size: 5rem; */
     text-transform: capitalize;
     display: grid;
     place-items: center;

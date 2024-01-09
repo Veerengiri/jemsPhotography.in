@@ -2,8 +2,9 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
-import { Pagination, Autoplay } from "swiper/modules";
+import { Pagination, Autoplay,EffectCoverflow } from "swiper/modules";
 
+import 'swiper/css/effect-coverflow';
 const WorkSlider = () => {
   const portraitImages = Array.from(
     { length: 10 },
@@ -15,16 +16,24 @@ const WorkSlider = () => {
       loop={true}
       grabCursor={true}
       slidesPerView={3}
-      spaceBetween={50}
-      centeredSlides={true}
+      spaceBetween={50} 
+      effect={'coverflow'}  
+        centeredSlides={true}
       pagination={{
         clickable: true,
       }}
+       coverflowEffect={{
+          rotate: 50,
+          stretch: 0,
+          depth: 100,
+          modifier: 4,
+          slideShadows: true,
+        }}
       autoplay={{
         delay: 2500,
         disableOnInteraction: false,
       }}
-      modules={[Autoplay]}
+      modules={[EffectCoverflow,Autoplay]}
       className="mySwiper"
     >
       {portraitImages.map((image, index) => (
