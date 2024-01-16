@@ -17,7 +17,7 @@ export const ServiceProvider = ({ children }) => {
     backgroundImg: '',
     imgData: [],
   });
-
+  
   const setTitle = (title) => {
     setServiceData((prevData) => ({ ...prevData, title }));
   };

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import MenuOpenIcon from "@mui/icons-material/MenuOpen";
 import "../styles/Sidebar.css";
 import DashboardOutlinedIcon from "@mui/icons-material/DashboardOutlined";
@@ -17,6 +17,7 @@ import LockClockOutlinedIcon from "@mui/icons-material/LockClockOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import StoreMallDirectoryOutlinedIcon from "@mui/icons-material/StoreMallDirectoryOutlined";import DiscountOutlinedIcon from "@mui/icons-material/DiscountOutlined";import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";import DoNotDisturbAltOutlinedIcon from "@mui/icons-material/DoNotDisturbAltOutlined";import BookOutlinedIcon from "@mui/icons-material/BookOutlined";import CalculateOutlinedIcon from "@mui/icons-material/CalculateOutlined";import StickyNote2OutlinedIcon from "@mui/icons-material/StickyNote2Outlined";import Groups2Icon from "@mui/icons-material/Groups2";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";import ArticleOutlinedIcon from "@mui/icons-material/ArticleOutlined";
+import { MyContext } from "../App";
 const Sidebar = () => {
     const [isCollapsedSidebar, setisCollapsedSidebar] = useState(false);
 
@@ -24,8 +25,8 @@ const Sidebar = () => {
       setisCollapsedSidebar((prev) => !prev);
       console.log(isCollapsedSidebar);
     };
-
-  return (
+    const {isLogin}=useContext(MyContext)
+  return ( isLogin && 
     <>
       <aside data-collapse={isCollapsedSidebar}>
         <div id="side_nav">
@@ -60,12 +61,12 @@ const Sidebar = () => {
                 <b className="sidebar_nav_txt">Modify Slider</b>
               </Link>
              
-              <Link to="/dashboard/modify-about">
+              {/* <Link to="/dashboard/modify-about">
                 <span>
                  <BookOutlinedIcon />
                 </span>
                 <b className="sidebar_nav_txt"> About Section</b>
-              </Link>
+              </Link> */}
               <small className="sidebar_nav_txt">Edit Services</small>
                 <Link to="/dashboard/modify-service">
                 <span>

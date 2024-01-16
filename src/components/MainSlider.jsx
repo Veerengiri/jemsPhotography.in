@@ -31,25 +31,25 @@ const MainSlider = () => {
         className="mySwiper main-sldr"
       >
         <SwiperSlide>
-          <img src="./imgs/main-slider/1.jpg" alt="" />
+          <img loading="lazy" src="./imgs/main-slider/1.jpg" alt="" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="./imgs/main-slider/2.jpg" alt="" />
+          <img loading="lazy" src="./imgs/main-slider/2.jpg" alt="" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="./imgs/main-slider/3.jpg" alt="" />
+          <img loading="lazy" src="./imgs/main-slider/3.jpg" alt="" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="./imgs/main-slider/4.jpg" alt="" />
+          <img loading="lazy" src="./imgs/main-slider/4.jpg" alt="" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="./imgs/main-slider/5.jpg" alt="" />
+          <img loading="lazy" src="./imgs/main-slider/5.jpg" alt="" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="./imgs/main-slider/6.jpg" alt="" />
+          <img loading="lazy" src="./imgs/main-slider/6.jpg" alt="" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="./imgs/main-slider/7.jpg" alt="" />
+          <img loading="lazy" src="./imgs/main-slider/7.jpg" alt="" />
         </SwiperSlide>
       </Swiper>
     </div>

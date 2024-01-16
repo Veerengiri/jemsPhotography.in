@@ -38,7 +38,7 @@ const WorkSlider = () => {
     >
       {portraitImages.map((image, index) => (
         <SwiperSlide key={index}>
-          <img src={image} alt={`Portrait ${index + 1}`} />
+          <img loading="lazy" src={image} alt={`Portrait ${index + 1}`} />
         </SwiperSlide>
       ))}
     </Swiper>

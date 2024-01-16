@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {
   Container,
   Paper,
@@ -9,15 +9,27 @@ import {
   FormControl,
   InputLabel,
 } from '@mui/material';
+import { MyContext } from '../../App';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [password, setPassword] = useState("");
+  // const epassword = process.env.REACT_APP_PASSWORD;
+  const epassword = "jems@34*^28$%studioyu";
+  const {setIsLogin}=useContext(MyContext);
+  const nav = useNavigate();
 
   const handleLogin = () => {
     // Add your login logic here
-    console.log('Email:', email);
-    console.log('Password:', password);
+    if(epassword==password){
+      setIsLogin(true);
+      setTimeout(() => {
+        nav("/dashboard/modify-slider")
+      }, 1000);
+    }else{
+      alert('invalid credentials');
+    }
   };
 
   return (
@@ -27,8 +39,7 @@ const Login = () => {
           Login to Dashboard
         </Typography>
         <form onSubmit={(e) => e.preventDefault()}>
-          <FormControl fullWidth margin="normal">
-            {/* <InputLabel htmlFor="email">Email</InputLabel> */}
+          {/* <FormControl fullWidth margin="normal">
             <TextField
               id="email"
               type="email"
@@ -40,8 +51,8 @@ const Login = () => {
               autoFocus
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-            />
-          </FormControl>
+            />  
+          </FormControl> */}
           <FormControl fullWidth margin="normal">
             {/* <InputLabel htmlFor="password">Password</InputLabel> */}
             <TextField
@@ -64,7 +75,7 @@ const Login = () => {
               color="primary"
               onClick={handleLogin}
             >
-              Login
+              Submit
             </Button>
           </Box>
         </form>

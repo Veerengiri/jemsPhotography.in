@@ -96,7 +96,7 @@ const Home = () => {
           </div>
           <div className="ab-flex">
             <div className="ab-r">
-              <img src="./imgs/main-slider/2.jpg" alt="" />
+              <img loading="lazy"  src="./imgs/main-slider/2.jpg" alt="" />
             </div>
             <div className="ab-l">
               <div className="pink">Jemsphotography</div>
@@ -128,7 +128,7 @@ const Home = () => {
           {serviceInfoArray.map((service, index) => (
             <div className="ser-flex" key={index}>
               <div className="ser-img">
-                <img src={service.img} alt={`Service ${index + 1}`} />
+                <img src={service.img} loading="lazy" alt={`Service ${index + 1}`} />
               </div>
               <div className="ser-info">
                 <div className="ser-title">{service.title}</div>
