@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -10,10 +10,27 @@ import "swiper/css/pagination";
 import { EffectFade, Autoplay } from "swiper/modules";
 
 const MainSlider = () => {
+  const backend = process.env.REACT_APP_BACKEND;
+  const [swiper,setSwiper]=useState(null);
+  const token = "jems@jkotiajrekjak752ukajk";
+  const loadImg = async ()=>{
+    const dt = await fetch(`${backend}/mainsliderImages`,{
+      method:"GET",
+      headers:{
+        token: token
+      }
+    })
+    const fr = await dt.json();
+    setSwiper(fr.dt);
+  }
+  useEffect(() => {
+    loadImg();
+  }, [])
+  
   return (
     <div>
       {" "}
-      <Swiper
+      {swiper ? <Swiper
         spaceBetween={30}
         loop={true}
         grabCursor={true}
@@ -30,28 +47,12 @@ const MainSlider = () => {
         modules={[EffectFade, Autoplay]}
         className="mySwiper main-sldr"
       >
-        <SwiperSlide>
-          <img loading="lazy" src="./imgs/main-slider/1.jpg" alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img loading="lazy" src="./imgs/main-slider/2.jpg" alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img loading="lazy" src="./imgs/main-slider/3.jpg" alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img loading="lazy" src="./imgs/main-slider/4.jpg" alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img loading="lazy" src="./imgs/main-slider/5.jpg" alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img loading="lazy" src="./imgs/main-slider/6.jpg" alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img loading="lazy" src="./imgs/main-slider/7.jpg" alt="" />
-        </SwiperSlide>
-      </Swiper>
+        {swiper.map((e)=>(<SwiperSlide>
+            <img loading="lazy" src={e.link} alt="" />
+          </SwiperSlide>
+        ))}
+        
+      </Swiper>: <img loading="lazy" src="/imgs/main-slider/1.jpg" alt="" />}
     </div>
   );
 };

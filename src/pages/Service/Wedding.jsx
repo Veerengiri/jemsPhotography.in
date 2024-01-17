@@ -40,7 +40,6 @@ const navigate = useNavigate()
           {serviceData && (
             <div
               className="page-title-after"
-        
             >
               {serviceData.title}
             </div>

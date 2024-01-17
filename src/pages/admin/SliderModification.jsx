@@ -37,7 +37,7 @@ const SliderModification = () => {
     if(newImgUrl=="" || newImgUrl.length<=10 || !mainSliderData || !portraitSliderData){
       alert("Enter Valide Url");
     }else{
-      const ind = activeImages[activeImages.length-1]?.index+1
+      const ind = activeImages[activeImages.length-1]?.index+1 || 1
       console.log(ind);
       const dt = await fetch(`${backend}/${isMain?"mainsliderAddImage":"portraitSlider"}`,{
         method:'Post',
@@ -53,6 +53,7 @@ const SliderModification = () => {
       const fr = await dt.json();
       if(fr.status=="ok"){
         alert("image Added Successfully");
+        setNewImgUrl("");
         isMain?getImgs():getImgsP();
       }else{
         alert("error");

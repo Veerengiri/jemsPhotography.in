@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Nav from "../../components/Nav";
 import MainSlider from "../../components/MainSlider";
 import "./Home.css";
@@ -12,21 +12,9 @@ const itemData = [
   { img: "../imgs/main-slider/5.jpg" },
   { img: "../imgs/prt-img/p8.jpg" },
   { img: "../imgs/prt-img/p1.jpg" },
-  { img: "../imgs/prt-img/p6.jpg" },
-  { img: "../imgs/main-slider/6.jpg" },
-  { img: "../imgs/main-slider/3.jpg" },
-  { img: "../imgs/prt-img/p3.jpg" },
-  { img: "../imgs/prt-img/p4.jpg" },
-  { img: "../imgs/main-slider/4.jpg" },
-  { img: "../imgs/prt-img/p2.jpg" },
-  { img: "../imgs/prt-img/p5.jpg" },
-  { img: "../imgs/main-slider/2.jpg" },
-  { img: "../imgs/prt-img/p7.jpg" },
-  { img: "../imgs/prt-img/p9.jpg" },
-  { img: "../imgs/main-slider/7.jpg" },
-  { img: "../imgs/prt-img/p10.jpg" },
+  { img: "../imgs/prt-img/p6.jpg" }
 ];
-const serviceInfoArray = [
+const serviceInfoArray2 = [
   {
     title: "Engagement Photography",
     text:
@@ -71,17 +59,37 @@ const serviceInfoArray = [
 ];
 const Home = () => {
   const { setTitle, setBackgroundImg, setImgData } = useService();
-
+  const [serviceInfoArray,setServiceInfoArray]=useState(serviceInfoArray2);
   const navigate = useNavigate();
+  
+  const backend = process.env.REACT_APP_BACKEND;
+  const token = "jems@jkotiajrekjak752ukajk"
+  const loadservice = async ()=>{
+    const dt = await fetch(`${backend}/services`,{
+      method:"GET",
+      headers:{
+        token:token
+      }
+    })
+    const fr = await dt.json();
+    if(fr.status=="ok"){
+      setServiceInfoArray(fr.dt);
+    }else{
+      alert("error");
+    }
+  }
+ 
   const handleExploreMore = (service) => {
     setTitle(service.title);
     setBackgroundImg(service.img);
-    setImgData(service.imgData); // Make sure imgData is set
+    setImgData(service.imglist); // Make sure imgData is set
 
     // Redirect to the specified route and pass imgData as state
-    navigate('/service/', { state: { imgData: service.imgData } });
+    navigate('/service/', { state: { imgData: service.imglist } });
   };
-
+  useEffect(()=>{
+    loadservice();
+  },[])
   return (
     <>
       <header>
@@ -125,7 +133,7 @@ const Home = () => {
           </div>
         </section>
         <section id="service">
-          {serviceInfoArray.map((service, index) => (
+          {serviceInfoArray && serviceInfoArray.map((service, index) => (
             <div className="ser-flex" key={index}>
               <div className="ser-img">
                 <img src={service.img} loading="lazy" alt={`Service ${index + 1}`} />
