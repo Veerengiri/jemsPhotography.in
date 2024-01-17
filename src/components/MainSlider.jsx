@@ -52,7 +52,7 @@ const MainSlider = () => {
           </SwiperSlide>
         ))}
         
-      </Swiper>: <img loading="lazy" src="/imgs/main-slider/1.jpg" alt="" />}
+      </Swiper>: <img style={{height:"100dvh",width:"100dvw"}}  loading="lazy" src="/imgs/main-slider/1.jpg" alt="" />}
     </div>
   );
 };

@@ -22,11 +22,12 @@ const WorkSlider = () => {
     })
     const finalresult = await dt.json();
     setPortraitSliderData(finalresult?.dt);
+    console.log(finalresult.dt);
   }
   useEffect(()=>{
     loadpts();
   },[])
-  return ( portraitSliderData &&
+  return (  <div>
     <Swiper
       loop={true}
       grabCursor={true}
@@ -51,12 +52,13 @@ const WorkSlider = () => {
       modules={[EffectCoverflow,Autoplay]}
       className="mySwiper"
     >
-      {portraitSliderData.map((image, index) => (
+      {portraitSliderData && portraitSliderData.map((image, index) => (
         <SwiperSlide key={index}>
           <img loading="lazy" src={image.link} alt={`Portrait ${index + 1}`} />
         </SwiperSlide>
       ))}
     </Swiper>
+  </div>
   );
 };
 
