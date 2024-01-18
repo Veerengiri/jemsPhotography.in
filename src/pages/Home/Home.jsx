@@ -7,6 +7,7 @@ import WorkSlider from "../../components/WorkSlider";
 import Footer from "../../components/Footer";
 import { Link } from "react-router-dom";
 import { useService } from "../../providers/ServiceProvider";
+import Splash from "./Splash";
 const itemData = [
   { img: "../imgs/main-slider/1.jpg" },
   { img: "../imgs/main-slider/5.jpg" },
@@ -92,6 +93,7 @@ const Home = () => {
   },[])
   return (
     <>
+      <Splash/>
       <header>
         <Nav />
         <MainSlider />

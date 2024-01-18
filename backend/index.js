@@ -8,12 +8,14 @@ const mainSlider = require('./mainSlider');
 const portraitSlider = require('./portraitslider');
 const sections = require('./section');
 const code = "jems@jkotiajrekjak752ukajk";
+const path = require("path");
 const cors = require('cors');
+
 app.use(
     cors({
       origin: "*",
     })
-);
+  );
 app.use(express.json());
 async function mid(req,res,next){
     const {token}=req.headers;
@@ -34,9 +36,15 @@ mongoose.connect(mongourl,{}).then(()=>{
     console.log("connected mongourl successfully");
 }).catch((err)=>{console.log(err)})
 
-app.get("/",async (req,res)=>{
-    res.json({status:"welcome to jems studio"});
-})
+app.use(express.static(path.join(__dirname, "build")));
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
+});
+// app.get("/", (req, res) => {
+//   res.header('Access-Control-Allow-Origin', '*'); 
+//   res.json({status:'welcome to jems studio'})
+// });
+
 app.use(mid);
 
 // MAIN SLIDER
@@ -44,8 +52,7 @@ app.get("/mainsliderImages",async (req,res)=>{
     try {
         const dt = await mainSlider.find().sort("index");
         res.json({dt}); 
-    } catch (error) {
-        res.json({status:'error'});
+    } catch (error) {res.json({status:'error'});
     }
 })
 app.post("/mainsliderAddImage",async (req,res)=>{
