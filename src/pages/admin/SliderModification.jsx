@@ -199,7 +199,9 @@ const SliderModification = () => {
             <Grid item xs={12}>
               {newImages.map((image, index) => (
                 <div key={index} style={{ marginBottom: '10px' }}>
-                  <input
+                <Grid container spacing={3}>
+            <Grid item xs={12}>
+              <TextField  style={{width:"100%"}}
                     type="text"
                     id={`newImageInput-${index}`}
                     value={newImgUrl}
@@ -208,6 +210,8 @@ const SliderModification = () => {
                       setNewImgUrl(e.target.value)
                     }}
                   />
+            </Grid>
+          </Grid>
                 </div>
               ))}
               {newImages.length==0 ? <Button variant="outlined" startIcon={<AddIcon />} onClick={handleAddMoreImages}>

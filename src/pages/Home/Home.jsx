@@ -154,7 +154,7 @@ const Home = () => {
           ))}
         </section>
         <section id="work">
-          <div class="title">
+          <div className="title">
             <h1>Our Work</h1>
           </div>
           <WorkSlider />

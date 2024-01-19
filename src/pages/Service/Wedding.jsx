@@ -24,7 +24,7 @@ const navigate = useNavigate()
       <header
         id="page-title"
         style={{
-          background: `linear-gradient(to top, rgba(0, 0, 0, 0.085), rgba(0, 0, 0, 0.2)), url(${serviceData.backgroundImg})`,
+          background: `linear-gradient(to top, rgba(0, 0, 0, 0.085), rgba(0, 0, 0, 0.2)), url(${serviceData.backgroundImg})`
         }}
       >
         <Nav />
