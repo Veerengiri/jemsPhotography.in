@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -8,10 +8,12 @@ import "swiper/css/effect-fade";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { EffectFade, Autoplay } from "swiper/modules";
+import { MyContext } from "../App";
 
 const MainSlider = () => {
   const backend = process.env.REACT_APP_BACKEND;
   const [swiper,setSwiper]=useState(null);
+  const {mainSlider,setMainSlider}=useContext(MyContext);
   const token = "jems@jkotiajrekjak752ukajk";
   const loadImg = async ()=>{
     const dt = await fetch(`${backend}/mainsliderImages`,{
@@ -22,9 +24,14 @@ const MainSlider = () => {
     })
     const fr = await dt.json();
     setSwiper(fr.dt);
+    setMainSlider(fr.dt);
   }
   useEffect(() => {
-    loadImg();
+    if(mainSlider){
+      setSwiper(mainSlider);
+    }else{
+      loadImg();
+    }
   }, [])
   
   return (
@@ -48,7 +55,7 @@ const MainSlider = () => {
         className="mySwiper main-sldr"
       >
         {swiper.map((e)=>(<SwiperSlide>
-            <img loading="lazy" src={e.link} alt="" />
+            <img loading="eager" src={e.link} alt="" />
           </SwiperSlide>
         ))}
         

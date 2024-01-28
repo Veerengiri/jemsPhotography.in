@@ -17,17 +17,17 @@ const Nav = () => {
   };
 
   return (
-    <nav>
+    <nav style={{zIndex:"2"}}>
       <div className="nv-l">
         {/* <img src="" alt="logo" /> */}
-        LOGO
+        Jems Photography
       </div>
       <div className="nv-r">
-        <a href="/">Home</a>
-        <a href="/#about">About</a>
-        <a href="/#service">Service</a>
-        <a href="/#work">Our Work</a>
-        <a href="/#contact">Contact</a>
+        <Link to="/">Home</Link>
+        <a href="#about">About</a>
+        <a href="#service">Service</a>
+        <a href="#work">Our Work</a>
+        <a href="#contact">Contact</a>
         <Link to="/dashboard">Dashboard</Link>
       </div>
       <IconButton onClick={toggleMenu} className="menu-button">

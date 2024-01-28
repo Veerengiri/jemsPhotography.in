@@ -45,8 +45,7 @@ const Footer = () => {
               <div className="footer-widget">
                 <div className="footer-logo">
                   <div id="lggg">
-                    LOGO
-                
+                    Jems Photography
                   </div>
                 </div>
                 <div className="footer-text">

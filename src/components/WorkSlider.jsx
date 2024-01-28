@@ -1,16 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination, Autoplay, EffectCoverflow } from "swiper/modules";
 import "swiper/css/effect-coverflow";
 import "swiper/css/bundle";
+import { MyContext } from "../App";
+import { SetMeal } from "@mui/icons-material";
 
 const WorkSlider = () => {
   const backend = process.env.REACT_APP_BACKEND;
   const token = "jems@jkotiajrekjak752ukajk";
   const [portraitSliderData, setPortraitSliderData] = useState(null);
   const [slidesPerView, setSlidesPerView] = useState(3);
+  const {workslider,setWorkSlider}=useContext(MyContext);
 
   const portraitImages = Array.from(
     { length: 10 },
@@ -26,11 +29,16 @@ const WorkSlider = () => {
     });
     const finalResult = await dt.json();
     setPortraitSliderData(finalResult?.dt);
-    console.log(finalResult.dt);
+    // console.log(finalResult.dt);
+    setWorkSlider(finalResult?.dt);
   };
 
   useEffect(() => {
-    loadPts();
+    if(workslider){
+      setPortraitSliderData(workslider);
+    }else{
+      loadPts();
+    }
   }, []);
 
   useEffect(() => {

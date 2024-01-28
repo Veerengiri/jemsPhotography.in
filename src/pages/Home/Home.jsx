@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Nav from "../../components/Nav";
 import MainSlider from "../../components/MainSlider";
 import "./Home.css";
@@ -8,6 +8,7 @@ import Footer from "../../components/Footer";
 import { Link } from "react-router-dom";
 import { useService } from "../../providers/ServiceProvider";
 import Splash from "./Splash";
+import { MyContext } from "../../App";
 const itemData = [
   { img: "../imgs/main-slider/1.jpg" },
   { img: "../imgs/main-slider/5.jpg" },
@@ -62,6 +63,8 @@ const Home = () => {
   const { setTitle, setBackgroundImg, setImgData } = useService();
   const [serviceInfoArray,setServiceInfoArray]=useState(serviceInfoArray2);
   const navigate = useNavigate();
+  const { services,setServices }=useContext(MyContext);
+  
   
   const backend = process.env.REACT_APP_BACKEND;
   const token = "jems@jkotiajrekjak752ukajk"
@@ -75,6 +78,7 @@ const Home = () => {
     const fr = await dt.json();
     if(fr.status=="ok"){
       setServiceInfoArray(fr.dt);
+      setServices(fr.dt);
     }else{
       alert("error");
     }
@@ -89,11 +93,15 @@ const Home = () => {
     navigate('/service/', { state: { imgData: service.imglist } });
   };
   useEffect(()=>{
-    loadservice();
+    if(services){
+      setServiceInfoArray(services);
+    }else{
+      loadservice();
+    }
   },[])
   return (
     <>
-      <Splash/>
+      
       <header>
         <Nav />
         <MainSlider />
@@ -138,7 +146,7 @@ const Home = () => {
           {serviceInfoArray && serviceInfoArray.map((service, index) => (
             <div className="ser-flex" key={index}>
               <div className="ser-img">
-                <img src={service.img} loading="lazy" alt={`Service ${index + 1}`} />
+                <img src={service.img} loading="eager" alt={`Service ${index + 1}`} />
               </div>
               <div className="ser-info">
                 <div className="ser-title">{service.title}</div>

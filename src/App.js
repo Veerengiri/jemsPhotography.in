@@ -10,13 +10,24 @@ import EditAboutSection from "./pages/admin/EditAboutSection";
 import ServiceList from "./pages/admin/ServiceList";
 import ServiceForm from "./pages/admin/ServiceForm";
 import AddRemoveGridImgs from "./pages/admin/AddRemoveGridImgs";
+import Splash from "./pages/Home/Splash";
 
 export const MyContext = createContext();
 const App = () => {
   const [isLogin,setIsLogin]=useState(false);
   const [gservices,setGservices]=useState([]);
+  const [mainSlider,setMainSlider]=useState(null);
+  const [services,setServices]=useState(null);
+  const [workslider,setWorkSlider]=useState(null);
   return (
-    <MyContext.Provider value={{isLogin,setIsLogin,gservices,setGservices}}>
+    <MyContext.Provider value={{
+      isLogin,setIsLogin,
+      gservices,setGservices,
+      mainSlider,setMainSlider,
+      services,setServices,
+      workslider,setWorkSlider
+      }}>
+      <Splash/>
       <Router>
         <ServiceProvider>
           <Routes>

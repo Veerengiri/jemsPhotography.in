@@ -12,6 +12,7 @@ import {
   Card, CardActions,
   CardMedia,
   IconButton,
+  TextField
 } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { MyContext } from '../../App';
@@ -158,11 +159,18 @@ const AddRemoveGridImgs = () => {
             <Grid item xs={12}>
               {newImages.map((image, index) => (
                 <div key={index} style={{ marginBottom: '10px' }}>
-                  <input
+                  {/* <input
                     type="text"
                     id={`newImageInput-${index}`}
                     placeholder='Enter Image Url here'
                     value={newimgUrl}
+                    onChange={(e)=>{setNewImagesUrl(e.target.value)}}
+                  /> */}
+                  <TextField  style={{width:"100%"}}
+                    type="text"
+                    id={`newImageInput-${index}`}
+                    value={newimgUrl}
+                    placeholder='Enter Image Url here'
                     onChange={(e)=>{setNewImagesUrl(e.target.value)}}
                   />
                 </div>

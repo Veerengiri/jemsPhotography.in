@@ -67,7 +67,7 @@ const ServiceForm = ({ serviceToEdit }) => {
     const fr = await dt.json();
     if(fr.status=="ok"){
       alert(`successfully ${!serviceToEdit?"Added":"Updated"} `);
-      serviceToEdit?window.location.href = window.location.href: nav("/dashboard/modify-service");
+      serviceToEdit?nav("/"): nav("/dashboard/modify-service");
     }else{
       alert("not updated");
     }
