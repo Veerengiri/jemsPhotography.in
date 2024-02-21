@@ -13,6 +13,7 @@ import { MyContext } from "../App";
 const MainSlider = () => {
   const backend = process.env.REACT_APP_BACKEND;
   const [swiper,setSwiper]=useState(null);
+  const [showslider,setShowSlider]=useState(false);
   const {mainSlider,setMainSlider}=useContext(MyContext);
   const token = "jems@jkotiajrekjak752ukajk";
   const loadImg = async ()=>{
@@ -25,6 +26,9 @@ const MainSlider = () => {
     const fr = await dt.json();
     setSwiper(fr.dt);
     setMainSlider(fr.dt);
+    setTimeout(() => {
+      setShowSlider(true);
+    }, 500);
   }
   useEffect(() => {
     if(mainSlider){
@@ -37,7 +41,7 @@ const MainSlider = () => {
   return (
     <div>
       {" "}
-      {swiper ? <Swiper
+      {(swiper && showslider) ? <Swiper
         spaceBetween={30}
         loop={true}
         grabCursor={true}

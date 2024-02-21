@@ -16,7 +16,7 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState("");
   // const epassword = process.env.REACT_APP_PASSWORD;
-  const epassword = "jems@34*^28$%studioyu";
+  const epassword = "";
   const {setIsLogin}=useContext(MyContext);
   const nav = useNavigate();
 
